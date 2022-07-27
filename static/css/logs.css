@@ -3,10 +3,6 @@
     font-size: 1.2em;
 }
 
-.logs_table {
-    margin-bottom: 1em;
-}
-
 .hidden {
     display: none;
 }
@@ -59,7 +55,7 @@
 }
 
 .button-wrapper {
-    margin-bottom: 1em;
+    margin: 1em;
 }
 
 #button {
