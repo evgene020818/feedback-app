@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/edit.css') }}">
+  <title>Edit Form {{form.id}}</title>
+{% endblock head %}
+
+{% block body %}
+  <div class="content">
+    <form action="/edit/{{form.id}}" method="POST">
+        <label for="firstName">First Name</label>
+        <input 
+          type="text" 
+          value='{{form.first_name}}' 
+          required 
+          id="firstName" 
+          name="firstName" 
+          placeholder="Your name..."
+          maxLength="50"
+        >
+
+        <label for="lastName">Last Name</label>
+        <input 
+          type="text"
+          value='{{form.last_name}}'  
+          required 
+          id="lastName" 
+          name="lastName" 
+          placeholder="Your last name..."
+          maxLength="50"
+        >
+
+        <label for="email">Email</label>
+        <input 
+          type="text"
+          value='{{form.email}}' 
+          required 
+          id="email" 
+          name="email" 
+          placeholder="Your email..."
+          maxLength="100"
+        >
+
+        <label for="feedback">Your feedback</label>
+        <textarea 
+          type="text"  
+          required
+          maxLength="2000"
+          id="feedback" 
+          name="feedback" 
+          placeholder="Write something..."
+          style="height: 200px;"
+        >{{form.content}}</textarea >
+
+        <button>Edit</button>
+      </form>
+      <a href="/" id="button">Go home</a>
+      {% if success %}
+        <span id='success'>Form was edited successfully</span>
+      {% endif %}
+  </div>
+{% endblock body %}

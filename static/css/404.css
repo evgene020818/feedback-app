@@ -1,0 +1,27 @@
+.content {
+    font-size: 2em;
+    display: grid;
+    justify-items: start;
+}
+
+.err {
+    color: red;
+}
+
+.err-msg {
+    font-weight: 500;
+}
+
+#button {
+    padding: 10px 20px;
+    margin-top: 30px;
+    text-decoration: none;
+    color: black;
+    background-color: #63cbff;
+    border: none;
+    border-radius: 10px;
+}
+
+#button:hover {
+    background-color: #31baff;
+}

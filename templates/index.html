@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <title>Provide Feedback</title>
+{% endblock %}
+
+{% block body %}
+  <div class="content">
+    <h2>User feedbacks:</h2>
+    {% if feedback_list|length < 1 %}
+    <div style="font-size: 1.3em;">There is no feedback yet. Leave one bellow</div>
+    {% else %}
+      <table class="feedback_list">
+        <tr class="record">
+            <td class="column">First Name</td>
+            <td class="column">Last Name</td>
+            <td class="column">Email</td>
+            <td class="column">Feedback Text</td>
+            <td class="column">Creation Date</td>
+          </tr>
+        {% for feedback in feedback_list %}
+          <tr class="record">
+            <td class="column"><span class="text">{{ feedback.first_name }}</span></td>
+            <td class="column"><span class="text">{{ feedback.last_name }}</span></td>
+            <td class="column"><span class="text">{{ feedback.email }}</span></td>
+            <td class="column"><span class="text">{{ feedback.content }}</span></td>
+            <td class="column last">
+              <span>
+                {{ feedback.created_at.date() }}
+              </span>
+              <span class="icons">
+                <a href="/feedback-form/{{feedback.id}}">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+                <a href="/edit/{{feedback.id}}">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </a>
+                <a href="/delete/{{feedback.id}}">
+                  <i class="fa-solid fa-trash-can"></i>
+                </a>
+              </span>
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    {% endif %}
+    <h2>Write Feedback:</h2>
+    <div class="container">
+      <form action="/" method="POST">
+        <label for="firstName">First Name</label>
+        <input 
+          type="text" 
+          required 
+          id="firstName" 
+          name="firstName" 
+          placeholder="Your name..."
+          maxLength="50"
+        >
+
+        <label for="lastName">Last Name</label>
+        <input 
+          type="text" 
+          required 
+          id="lastName" 
+          name="lastName" 
+          placeholder="Your last name..."
+          maxLength="50"
+        >
+
+        <label for="email">Email</label>
+        <input 
+          type="text" 
+          required 
+          id="email" 
+          name="email" 
+          placeholder="Your email..."
+          maxLength="100"
+        >
+
+        <label for="feedback">Your feedback</label>
+        <textarea 
+          type="text" 
+          required
+          maxLength="2000"
+          id="feedback" 
+          name="feedback" 
+          placeholder="Write something..."
+          style="height: 200px;"
+        ></textarea >
+
+        <button>Submit</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

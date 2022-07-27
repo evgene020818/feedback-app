@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/logs.css') }}">
+  <title>Loggs</title>
+{% endblock head %}
+
+{% block body %}
+<div class="content">
+<h2>Loggs</h2>
+  {% if logs|length %}
+    <table class="logs_table">
+      <tr class="row">
+        <td>Action:</td>
+        <td>Form:</td>
+        <td>When happened:</td>
+      </tr>
+      {% for log in logs %}
+        <tr class="row">
+          <td>{{log['action'].capitalize()}}</td>
+          <td>
+            Id: {{log['form']['id']}}
+            <i 
+              class="form-dropdown fa-solid fa-angle-right" 
+              onclick="toggleClass({{log['id']}})"
+              id="dropdown{{log['id']}}"
+            ></i>
+            <div class="hidden" id="form-content{{log['id']}}">
+                <div class="form-prop">
+                  <span>First Name:</span>
+                  <span class="value">{{log['form']['first_name']}}</span>
+                </div>
+                <div class="form-prop">
+                  <span>Last Name:</span>
+                  <span class="value">{{log['form']['last_name']}}</span>
+                </div>
+                <div class="form-prop">
+                  <span>Email:</span>
+                  <span class="value">{{log['form']['email']}}</span>
+                </div>
+                <div class="feedback-text">
+                  <span>Feedback Text:</span>
+                  <span class="value">{{log['form']['content']}}</span>
+                </div>
+            </div>
+          </td>
+          <td>{{log['created_at']}}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <div>There are no logs yet</div>
+  {% endif %}
+  <a href="/" id="button">Go home</a>
+</div>
+<script>
+  function toggleClass(id) {
+    document.getElementById('dropdown' + id).classList.toggle('fa-angle-down')
+    document.getElementById('dropdown' + id).classList.toggle('fa-angle-right')
+    document.getElementById('form-content' + id).classList.toggle('hidden')
+    document.getElementById('form-content' + id).classList.toggle('form-props')
+  }
+</script>
+{% endblock body %}

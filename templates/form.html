@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+  <title>Form {{form.id}}</title>
+{% endblock head %}
+
+{% block body %}
+  <div class="content">
+    <div class="prop">
+      <label for="firstName">First Name:</label>
+      <div class="value" id="firstName">{{form.first_name}}</div>
+    </div>
+    <div class="prop">
+      <label for="lastName">Last Name:</label>
+      <div class="value" id="lastName">{{form.last_name}}</div>
+    </div>
+    <div class="prop">
+      <label for="email">Email:</label>
+      <div class="value" id="email">{{form.email}}</div>
+    </div>
+    <div class="feedback">
+      <label for="content">Feedback text:</label>
+      <div class="feedback-text" id="content">{{form.content}}</div>
+    </div>
+    <div class="buttons">
+      <a href="/" class="button">Go to main page</a>
+      <a href="/edit/{{form.id}}" class="button">Edit</a>
+      <a href="/delete/{{form.id}}" class="button">Delete</a>
+    </div>
+  </div>
+{% endblock body %}

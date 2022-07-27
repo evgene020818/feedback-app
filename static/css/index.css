@@ -1,0 +1,70 @@
+.content {
+    max-width: 1000px;
+    font-size: 1em;
+}
+
+.record {
+    display: grid;
+    grid-template-columns: 10% 10% 20% 40% 20%;
+    min-height: 0;
+    min-width: 0;
+}
+
+.column {
+    padding: 10px;
+    border: solid #73cefc;
+    border-width: 1px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+input[type=text],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+button {
+    background-color: #73cefc;
+    color: rgb(0, 0, 0);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.container {
+    margin: 1em 0;
+}
+
+.last {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+}
+
+.icons>a {
+    color: #31baff;
+    text-decoration: none;
+    margin: 0 1px;
+}
+
+.text {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    overflow-wrap: anywhere;
+}
+
+.feedback_list {
+    width: 100%;
+}
