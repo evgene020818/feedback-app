@@ -58,6 +58,10 @@
     overflow-wrap: anywhere;
 }
 
+.button-wrapper {
+    margin-bottom: 1em;
+}
+
 #button {
     background-color: #73cefc;
     text-decoration: none;
